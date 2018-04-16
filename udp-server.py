@@ -72,9 +72,11 @@ def client_thread(connection, ip, port, back_port, max_buffer_size = 5120):
             else:
                 print("Processed result: {}".format(client_input))
                 print("back port = " + str(back_port))
+                # connection.send(bytes("TakBlet", 'UTF-8'))
+                connection.sendall(bytes("TakBlet2", 'UTF-8'))
                 if back_port != 0:
                     send_to_port(back_port, client_input)
-                connection.sendall("-".encode("utf8"))
+                # connection.sendall("-".encode("utf8"))
         except:
             print("broken pipe")
             is_active = False
